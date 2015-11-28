@@ -1,0 +1,61 @@
+ENTRY(mystart)
+OUTPUT_FORMAT(binary)
+OUTPUT(kernel.img)
+
+SECTIONS {
+    .text 0x7C00 : {
+        . = 0;
+        boot.o(.text);
+        FILL(0x00);
+        . = 510;
+        FILL(0x55);
+        . = 511;
+        FILL(0xAA);
+
+        . = 512;
+        boot2.o(.text);
+        FILL(0x00);
+
+        /* gdt */
+        . = 1024;
+        boot2.o(.data);
+
+        . = 1536;
+        kernel.o(.text);
+        common.o(.text);
+        x86_asm.o(.text);
+        TerminalState.o(.text);
+        monitor.o(.text);
+        isr.o(.text);
+        descriptors.o(.text);
+
+        kernel.o(.rodata);
+        kernel.o(.data);
+
+        common.o(.rodata);
+        common.o(.data);
+
+        x86_asm.o(.rodata);
+        x86_asm.o(.data);
+
+        TerminalState.o(.rodata);
+        TerminalState.o(.data);
+
+        monitor.o(.rodata);
+        monitor.o(.data);
+
+        isr.o(.rodata);
+        isr.o(.data);
+
+        descriptors.o(.rodata);
+        descriptors.o(.data);
+
+        FILL(0x00);
+        . = 1474560;
+    }
+
+    /DISCARD/ : {
+        *(.eh_frame);
+        *(.comment);
+    }
+}

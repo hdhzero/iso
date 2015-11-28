@@ -1,0 +1,5 @@
+display_library: sdl
+megs: 256
+boot: cdrom
+ata1: enabled=1, ioaddr1=0x170, ioaddr2=0x370, irq=15
+ata1-master: type=cdrom, path="kernel.iso", status=inserted
