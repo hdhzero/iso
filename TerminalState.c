@@ -93,7 +93,7 @@ void terminal_state_print_int(struct TerminalState* ts, int n) {
         terminal_state_putchar(ts, '-');
         terminal_state_print_dec(ts, -n);
     } else {
-        terminal_state_putchar(ts, n);
+        terminal_state_print_dec(ts, n);
     }
 }
 

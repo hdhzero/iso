@@ -14,7 +14,13 @@ SECTIONS {
 
         . = 512;
         boot2.o(.text);
+        FILL(0x00);
+
+        /* gdt */
+        . = 1024;
         boot2.o(.data);
+
+        . = 1536;
         *(.text);
         *(.rodata);
         *(.data);

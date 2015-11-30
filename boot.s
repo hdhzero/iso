@@ -1,4 +1,5 @@
     global mystart
+    extern stage2
 
     bits 16
     section .text
@@ -107,6 +108,7 @@ track7:
     jc track7
 
 go_to_stage2:
-    jmp 0x0000:0x7E00
+;    jmp 0x0000:0x7E00
+    jmp 0x0000:stage2
 
 

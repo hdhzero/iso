@@ -1,4 +1,4 @@
-TOOLCHAIN=/home/aluno/Downloads/toolchain
+TOOLCHAIN=/home/hdhzero/projetos/toolchain
 NASM="$(TOOLCHAIN)/nasm/bin/nasm"
 GCC="$(TOOLCHAIN)/bin/i686-elf-gcc"
 LD="$(TOOLCHAIN)/bin/i686-elf-ld"
